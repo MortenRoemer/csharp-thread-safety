@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>latest</LangVersion>
+        <AssemblyName>MortenRoemer.ThreadSafety</AssemblyName>
+        <RootNamespace>MortenRoemer.ThreadSafety</RootNamespace>
+        <Authors>Morten Römer</Authors>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>MortenRoemer.ThreadSafetyTagging</PackageId>
+        <Title>MortenRoemer.ThreadSafetyTagging</Title>
+        <Description>Provides support for tagging classes for intended memory safety</Description>
+        <Copyright>2024 Morten Römer</Copyright>
+        <RepositoryUrl>https://github.com/MortenRoemer/csharp-thread-safety</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+</Project>
