@@ -14,10 +14,13 @@
         <Description>Provides support for tagging classes for intended memory safety</Description>
         <Copyright>2024 Morten Römer</Copyright>
         <RepositoryUrl>https://github.com/MortenRoemer/csharp-thread-safety</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.2.2" />
+      <None Include="..\README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
 </Project>
