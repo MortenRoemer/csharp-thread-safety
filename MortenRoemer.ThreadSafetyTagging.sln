@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortenRoemer.ThreadSafetyTagging", "MortenRoemer.ThreadSafetyTagging\MortenRoemer.ThreadSafetyTagging.csproj", "{7F28E391-06B9-4565-AC19-D436219E045A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortenRoemer.ThreadSafetyTagging.Examples", "MortenRoemer.ThreadSafetyTagging.Examples\MortenRoemer.ThreadSafetyTagging.Examples.csproj", "{FD8C741C-FAA6-4802-8470-A583EA5B24D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortenRoemer.ThreadSafetyTagging.Analyzer", "MortenRoemer.ThreadSafetyTagging.Analyzer\MortenRoemer.ThreadSafetyTagging.Analyzer.csproj", "{8AAF64A0-1549-4FDF-8550-9F1CDFBB6E2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F28E391-06B9-4565-AC19-D436219E045A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F28E391-06B9-4565-AC19-D436219E045A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F28E391-06B9-4565-AC19-D436219E045A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F28E391-06B9-4565-AC19-D436219E045A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD8C741C-FAA6-4802-8470-A583EA5B24D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD8C741C-FAA6-4802-8470-A583EA5B24D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD8C741C-FAA6-4802-8470-A583EA5B24D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD8C741C-FAA6-4802-8470-A583EA5B24D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AAF64A0-1549-4FDF-8550-9F1CDFBB6E2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AAF64A0-1549-4FDF-8550-9F1CDFBB6E2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AAF64A0-1549-4FDF-8550-9F1CDFBB6E2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AAF64A0-1549-4FDF-8550-9F1CDFBB6E2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
