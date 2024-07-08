@@ -29,7 +29,10 @@ public static class MRTS0001RuleAnalyzer
             return;
         }
 
-        if (!field.Type.GetThreadSafetyMode(out var innerMode) || innerMode != ThreadSafetyMode.Immutable)
+        if (!field.Type.GetThreadSafetyMode(out var innerMode))
+            context.ReportDiagnostic(Diagnostic.Create(Rule, field.Locations[0]));
+        
+        if (innerMode is not (ThreadSafetyMode.Enum or ThreadSafetyMode.Immutable))
             context.ReportDiagnostic(Diagnostic.Create(Rule, field.Locations[0]));
     }
 }
