@@ -5,6 +5,9 @@ namespace MortenRoemer.ThreadSafetyTagging.Examples;
 [ImmutableMemoryAccess]
 public sealed class ImmutableDataClass
 {
+    // any const is generally safe
+    private const string ODataVersion = "4.0";
+    
     public ImmutableDataClass(Guid id, ExampleEnum enumValue)
     {
         Id = id;
