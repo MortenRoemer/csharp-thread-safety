@@ -6,5 +6,5 @@ namespace MortenRoemer.ThreadSafety;
 [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
 public sealed class SkipMemorySafetyCheckAttribute : Attribute
 {
-    
+    public required string Because { get; init; }
 }

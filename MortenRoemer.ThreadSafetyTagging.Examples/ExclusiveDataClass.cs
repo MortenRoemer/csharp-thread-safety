@@ -19,4 +19,7 @@ public sealed class ExclusiveDataClass
 
     // Any non-readonly, non-volatile field is exclusive
     private bool SomeCondition;
+
+    [SkipMemorySafetyCheck(Because = "this list does not effect the memory safety of this class")]
+    private List<int> SomeUncheckedList { get; } = [];
 }
