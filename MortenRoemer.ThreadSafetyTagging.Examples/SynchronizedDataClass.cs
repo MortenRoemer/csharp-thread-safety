@@ -5,6 +5,9 @@ namespace MortenRoemer.ThreadSafetyTagging.Examples;
 [SynchronizedMemoryAccess]
 public sealed class SynchronizedDataClass
 {
+    // any const is generally safe
+    private const string ODataVersion = "4.0";
+    
     // Any Enum property that is read-only is immutable and therefore safe
     public ExampleEnum EnumValueProperty { get; }
     

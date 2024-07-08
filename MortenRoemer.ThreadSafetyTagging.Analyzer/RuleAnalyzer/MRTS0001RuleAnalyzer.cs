@@ -23,7 +23,7 @@ public static class MRTS0001RuleAnalyzer
         if (field.ContainingType is null || !field.ContainingType.GetThreadSafetyMode(out var mode) || mode != ThreadSafetyMode.Immutable)
             return;
         
-        if (!field.IsReadOnly)
+        if (!(field.IsReadOnly || field.IsConst ))
         {
             context.ReportDiagnostic(Diagnostic.Create(Rule, field.Locations[0]));
             return;
