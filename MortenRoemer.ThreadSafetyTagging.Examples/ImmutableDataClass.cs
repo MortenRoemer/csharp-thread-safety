@@ -5,12 +5,23 @@ namespace MortenRoemer.ThreadSafetyTagging.Examples;
 [ImmutableMemoryAccess]
 public sealed class ImmutableDataClass
 {
-    public ImmutableDataClass(Guid id)
+    // any const is generally safe
+    private const string ODataVersion = "4.0";
+    
+    public ImmutableDataClass(Guid id, ExampleEnum enumValue)
     {
         Id = id;
+        EnumValueProperty = enumValue;
+        EnumValueField = enumValue;
     }
 
     private readonly int Test = 0;
+    
+    // Any Enum property that is read-only is immutable
+    public ExampleEnum EnumValueProperty { get; }
+    
+    // Any Enum property that is read-only is immutable
+    public readonly ExampleEnum EnumValueField;
     
     // Any Property that is only set by the constructor and has no interior mutability is immutable
     public Guid Id { get; }

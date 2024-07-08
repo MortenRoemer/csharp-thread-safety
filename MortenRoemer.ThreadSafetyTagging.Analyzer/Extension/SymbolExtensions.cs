@@ -86,7 +86,7 @@ public static class SymbolExtensions
         
         if (typeSymbol.BaseType is not null && typeSymbol.BaseType.SpecialType == SpecialType.System_Enum)
         {
-            mode = ThreadSafetyMode.Immutable;
+            mode = ThreadSafetyMode.Enum;
             return true;
         }
 

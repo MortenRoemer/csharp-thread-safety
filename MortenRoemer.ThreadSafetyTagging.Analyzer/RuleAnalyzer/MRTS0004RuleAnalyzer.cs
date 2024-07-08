@@ -23,7 +23,7 @@ public static class MRTS0004RuleAnalyzer
         if (field.ContainingType is null || !field.ContainingType.GetThreadSafetyMode(out var mode) || mode != ThreadSafetyMode.Synchronized)
             return;
         
-        if (!(field.IsReadOnly || field.IsVolatile))
+        if (!(field.IsReadOnly || field.IsConst || field.IsVolatile))
         {
             context.ReportDiagnostic(Diagnostic.Create(Rule, field.Locations[0]));
             return;
