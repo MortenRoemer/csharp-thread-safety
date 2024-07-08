@@ -5,6 +5,12 @@ namespace MortenRoemer.ThreadSafetyTagging.Examples;
 [SynchronizedMemoryAccess]
 public sealed class SynchronizedDataClass
 {
+    // Any Enum property that is read-only is immutable and therefore safe
+    public ExampleEnum EnumValueProperty { get; }
+    
+    // Any Enum property that is read-only is immutable and therefore safe
+    public readonly ExampleEnum EnumValueField;
+    
     // Any class that is already thead-safe can be used in a synchronized context
     public readonly HttpClient _client = new();
     
