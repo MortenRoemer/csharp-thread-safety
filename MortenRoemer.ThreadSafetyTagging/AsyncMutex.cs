@@ -22,7 +22,7 @@ public struct AsyncMutex<T> : IDisposable
 
     private volatile bool _initialized;
     
-    [SkipMemorySafetyCheck]
+    [SkipMemorySafetyCheck(Because = "this instance is protected against concurrent access by a semaphore")]
     private T _instance;
 
     public void Dispose()
