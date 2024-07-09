@@ -1,9 +1,10 @@
 using MortenRoemer.ThreadSafety;
+using MortenRoemer.ThreadSafetyTagging.Examples.InterfaceExample;
 
 namespace MortenRoemer.ThreadSafetyTagging.Examples;
 
 [SynchronizedMemoryAccess]
-public sealed class SynchronizedDataClass
+public sealed class SynchronizedDataClass : ISynchronizedInterface
 {
     // any const is generally safe
     private const string ODataVersion = "4.0";
@@ -22,4 +23,6 @@ public sealed class SynchronizedDataClass
 
     // You can use primitives in synchronized classes if they are either marked as readonly or as volatile
     private volatile byte _flag;
+    
+    public int Number { get; }
 }
