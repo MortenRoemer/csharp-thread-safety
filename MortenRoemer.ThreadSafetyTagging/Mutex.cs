@@ -22,7 +22,7 @@ public struct Mutex<T> : IDisposable
 
     private volatile bool _initialized;
 
-    [SkipMemorySafetyCheck]
+    [SkipMemorySafetyCheck(Because = "this instance is protected against concurrent access by a mutex")]
     private T _instance;
     
     public void Dispose()
