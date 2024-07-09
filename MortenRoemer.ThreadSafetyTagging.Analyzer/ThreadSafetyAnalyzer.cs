@@ -17,12 +17,18 @@ public sealed class ThreadSafetyAnalyzer : DiagnosticAnalyzer
         context.RegisterSymbolAction(MRTS0002RuleAnalyzer.Analyze, SymbolKind.Property);
         context.RegisterSymbolAction(MRTS0003RuleAnalyzer.Analyze, SymbolKind.Property);
         context.RegisterSymbolAction(MRTS0004RuleAnalyzer.Analyze, SymbolKind.Field);
+        context.RegisterSymbolAction(MRTS0005RuleAnalyzer.Analyze, SymbolKind.NamedType);
+        context.RegisterSymbolAction(MRTS0006RuleAnalyzer.Analyze, SymbolKind.NamedType);
     }
 
-    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = new[] {
-        MRTS0001RuleAnalyzer.Rule,
-        MRTS0002RuleAnalyzer.Rule,
-        MRTS0003RuleAnalyzer.Rule,
-        MRTS0004RuleAnalyzer.Rule,
-    }.ToImmutableArray();
+    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = [
+        ..new[] {
+            MRTS0001RuleAnalyzer.Rule,
+            MRTS0002RuleAnalyzer.Rule,
+            MRTS0003RuleAnalyzer.Rule,
+            MRTS0004RuleAnalyzer.Rule,
+            MRTS0005RuleAnalyzer.Rule,
+            MRTS0006RuleAnalyzer.Rule,
+        }
+    ];
 }
