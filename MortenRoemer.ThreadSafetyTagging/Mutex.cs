@@ -5,7 +5,7 @@ namespace MortenRoemer.ThreadSafety;
 /// </summary>
 /// <typeparam name="T">The content type to protect</typeparam>
 [SynchronizedMemoryAccess]
-public struct Mutex<T> : IDisposable
+public sealed class Mutex<T> : IDisposable
 {
     /// <summary>
     /// Creates an instance with the specified content initializer
@@ -23,7 +23,7 @@ public struct Mutex<T> : IDisposable
     private volatile bool _initialized;
 
     [SkipMemorySafetyCheck(Because = "this instance is protected against concurrent access by a mutex")]
-    private T _instance;
+    private T? _instance;
     
     public void Dispose()
     {
@@ -55,7 +55,7 @@ public struct Mutex<T> : IDisposable
                 _initialized = true;
             }
             
-            action(_instance);
+            action(_instance!);
         }
         finally
         {
@@ -87,7 +87,7 @@ public struct Mutex<T> : IDisposable
                 _initialized = true;
             }
             
-            return action(_instance);
+            return action(_instance!);
         }
         finally
         {
