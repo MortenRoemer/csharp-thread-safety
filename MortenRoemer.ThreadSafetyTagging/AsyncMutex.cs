@@ -5,7 +5,7 @@ namespace MortenRoemer.ThreadSafety;
 /// </summary>
 /// <typeparam name="T">The type to protect against concurrent access</typeparam>
 [SynchronizedMemoryAccess]
-public struct AsyncMutex<T> : IDisposable
+public sealed class AsyncMutex<T> : IDisposable, IAsyncDisposable
 {
     /// <summary>
     /// Creates a new instance with the specified initializer delegate
@@ -23,7 +23,7 @@ public struct AsyncMutex<T> : IDisposable
     private volatile bool _initialized;
     
     [SkipMemorySafetyCheck(Because = "this instance is protected against concurrent access by a semaphore")]
-    private T _instance;
+    private T? _instance;
 
     public void Dispose()
     {
@@ -31,6 +31,25 @@ public struct AsyncMutex<T> : IDisposable
         
         if (_initialized && _instance is IDisposable disposable)
             disposable.Dispose();
+    }
+    
+    public async ValueTask DisposeAsync()
+    {
+        _lock.Dispose();
+
+        if (!_initialized)
+            return;
+
+        switch (_instance)
+        {
+            case IAsyncDisposable asyncDisposable:
+                await asyncDisposable.DisposeAsync();
+                break;
+            
+            case IDisposable disposable:
+                disposable.Dispose();
+                break;
+        }
     }
 
     /// <summary>
@@ -55,7 +74,7 @@ public struct AsyncMutex<T> : IDisposable
                 _initialized = true;
             }
             
-            await action(_instance);
+            await action(_instance!);
         }
         finally
         {
@@ -87,7 +106,7 @@ public struct AsyncMutex<T> : IDisposable
                 _initialized = true;
             }
             
-            return await action(_instance);
+            return await action(_instance!);
         }
         finally
         {
