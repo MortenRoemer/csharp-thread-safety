@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
-using MortenRoemer.ThreadSafetyTagging.Analyzer.Extension;
+using MortenRoemer.ThreadSafetyTagging.Analyzer.ThreadSafety;
 
 namespace MortenRoemer.ThreadSafetyTagging.Analyzer.RuleAnalyzer;
 
