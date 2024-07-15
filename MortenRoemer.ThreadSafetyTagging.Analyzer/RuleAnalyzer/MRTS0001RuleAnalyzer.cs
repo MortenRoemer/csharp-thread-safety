@@ -30,7 +30,10 @@ public static class MRTS0001RuleAnalyzer
         }
 
         if (!field.Type.GetThreadSafetyMode(out var innerMode))
+        {
             context.ReportDiagnostic(Diagnostic.Create(Rule, field.Locations[0]));
+            return;
+        }
         
         if (innerMode is not (ThreadSafetyMode.Enum or ThreadSafetyMode.Immutable))
             context.ReportDiagnostic(Diagnostic.Create(Rule, field.Locations[0]));

@@ -40,6 +40,12 @@ public static class SymbolExtensions
     
     public static bool GetThreadSafetyMode(this ITypeSymbol typeSymbol, out ThreadSafetyMode mode)
     {
+        if (typeSymbol is IArrayTypeSymbol)
+        {
+            mode = ThreadSafetyMode.Exclusive;
+            return true;
+        }
+        
         if (KnownTypes.TryGetThreadSafety(typeSymbol.GetNamespaceQualifiedName(), out var wellKnownThreadSafetyMode))
         {
             mode = wellKnownThreadSafetyMode;
