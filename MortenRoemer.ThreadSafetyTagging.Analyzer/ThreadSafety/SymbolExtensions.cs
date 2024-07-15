@@ -71,32 +71,41 @@ public static class SymbolExtensions
 
             return true;
         }
-        
-        foreach (var attribute in typeSymbol.GetAttributes())
-        {
-            if (attribute.AttributeClass is null)
-                continue;
-            
-            var attributeClassName = attribute.AttributeClass.Name;
 
-            switch (attributeClassName)
-            {
-                case ExclusiveAttributeTypeName:
-                    mode = ThreadSafetyMode.Exclusive;
-                    return true;
-                    
-                case SynchronizedAttributeTypeName:
-                    mode = ThreadSafetyMode.Synchronized;
-                    return true;
-                    
-                case ImmutableAttributeTypeName:
-                    mode = ThreadSafetyMode.Immutable;
-                    return true;
-            }
+        var annotatedThreadSafety = GetAnnotatedThreadSafetyMode(typeSymbol);
+
+        if (annotatedThreadSafety is not null)
+        {
+            mode = annotatedThreadSafety.Value;
+            return true;
         }
 
         mode = default;
         return false;
+    }
+
+    public static ThreadSafetyMode? GetAnnotatedThreadSafetyMode(ITypeSymbol typeSymbol)
+    {
+        var attributeClasses = typeSymbol.GetAttributes()
+            .Where(attribute => attribute.AttributeClass is not null)
+            .Select(attribute => attribute.AttributeClass!.Name);
+        
+        foreach (var attributeClassName in attributeClasses)
+        {
+            switch (attributeClassName)
+            {
+                case ExclusiveAttributeTypeName:
+                    return ThreadSafetyMode.Exclusive;
+                    
+                case SynchronizedAttributeTypeName:
+                    return ThreadSafetyMode.Synchronized;
+                    
+                case ImmutableAttributeTypeName:
+                    return ThreadSafetyMode.Immutable;
+            }
+        }
+
+        return null;
     }
 
     public static bool HasSkipCheckAttribute(this ISymbol symbol)
