@@ -1,3 +1,6 @@
+// AsyncMutex is only available on .Net Core
+#if CORECLR
+
 namespace MortenRoemer.ThreadSafety;
 
 /// <summary>
@@ -6,6 +9,7 @@ namespace MortenRoemer.ThreadSafety;
 /// <typeparam name="T">The type to protect against concurrent access</typeparam>
 [SynchronizedMemoryAccess]
 public sealed class AsyncMutex<T> : IDisposable, IAsyncDisposable
+
 {
     /// <summary>
     /// Creates a new instance with the specified initializer delegate
@@ -33,6 +37,7 @@ public sealed class AsyncMutex<T> : IDisposable, IAsyncDisposable
             disposable.Dispose();
     }
     
+#if CORECLR
     public async ValueTask DisposeAsync()
     {
         _lock.Dispose();
@@ -51,6 +56,7 @@ public sealed class AsyncMutex<T> : IDisposable, IAsyncDisposable
                 break;
         }
     }
+#endif
 
     /// <summary>
     /// Executes the specified action on its content in a matter that is safe in a multi-threading context
@@ -114,3 +120,5 @@ public sealed class AsyncMutex<T> : IDisposable, IAsyncDisposable
         }
     }
 }
+
+#endif

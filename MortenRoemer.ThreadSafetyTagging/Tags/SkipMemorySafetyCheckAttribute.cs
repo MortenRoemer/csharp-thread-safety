@@ -6,5 +6,9 @@ namespace MortenRoemer.ThreadSafety;
 [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
 public sealed class SkipMemorySafetyCheckAttribute : Attribute
 {
+#if CORECLR
     public required string Because { get; init; }
+#else
+    public string Because { get; set; } = string.Empty;
+#endif
 }
