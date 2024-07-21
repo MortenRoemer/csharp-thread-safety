@@ -1,5 +1,6 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
+using MortenRoemer.ThreadSafetyTagging.Analyzer.Platform;
 using MortenRoemer.ThreadSafetyTagging.Analyzer.ThreadSafety;
 
 namespace MortenRoemer.ThreadSafetyTagging.Analyzer.RuleAnalyzer;
@@ -21,6 +22,9 @@ public static class MRTS0004RuleAnalyzer
             return;
         
         if (field.ContainingType is null || !field.ContainingType.GetThreadSafetyMode(out var mode) || mode != ThreadSafetyMode.Synchronized)
+            return;
+        
+        if (field.ContainingType.IsActivityArgument())
             return;
         
         if (!(field.IsReadOnly || field.IsConst || field.IsVolatile))
