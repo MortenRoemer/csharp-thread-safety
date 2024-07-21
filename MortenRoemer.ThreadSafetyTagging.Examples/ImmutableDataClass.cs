@@ -30,6 +30,4 @@ public class ImmutableDataClass : IImmutableInterface
     
     // Any Collection Property that is readonly and has no interior mutability in its members is immutable
     public required IReadOnlyList<DateTime> PointsInTime { get; init; }
-
-    public readonly string[] StringArray;
 }
