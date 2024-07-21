@@ -86,6 +86,10 @@ public static class KnownTypes
         // System.Net.Http
         new("System.Net.Http.HttpClient", ThreadSafetyMode.Synchronized),
         
+        // Microsoft.Xrm.Sdk
+        new("Microsoft.Xrm.Sdk.AliasedValue", ThreadSafetyMode.Immutable),
+        
+        
     }.ToImmutableDictionary();
 
     public static bool TryGetThreadSafety(string typeName, out ThreadSafetyMode mode)

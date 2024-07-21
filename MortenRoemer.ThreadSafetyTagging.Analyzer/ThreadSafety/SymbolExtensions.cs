@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
+using MortenRoemer.ThreadSafetyTagging.Analyzer.Platform;
 
 namespace MortenRoemer.ThreadSafetyTagging.Analyzer.ThreadSafety;
 
@@ -77,6 +78,12 @@ public static class SymbolExtensions
         if (annotatedThreadSafety is not null)
         {
             mode = annotatedThreadSafety.Value;
+            return true;
+        }
+
+        if (typeSymbol.IsPowerPlatformPluginOrActivity() || typeSymbol.IsActivityArgument())
+        {
+            mode = ThreadSafetyMode.Synchronized;
             return true;
         }
 
