@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Text.RegularExpressions;
 using MortenRoemer.ThreadSafety;
 using MortenRoemer.ThreadSafetyTagging.Examples.InterfaceExample;
 
@@ -8,6 +10,10 @@ public class ImmutableDataClass : IImmutableInterface
 {
     // any const is generally safe
     private const string ODataVersion = "4.0";
+
+    private static readonly Regex Pattern = new Regex(".*");
+
+    private static readonly CultureInfo German = new CultureInfo("de-DE");
     
     public ImmutableDataClass(int number, ExampleEnum enumValue)
     {
