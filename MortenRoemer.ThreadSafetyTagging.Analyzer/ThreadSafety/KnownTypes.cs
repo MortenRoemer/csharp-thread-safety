@@ -41,6 +41,9 @@ public static class KnownTypes
         new("System.Uri", ThreadSafetyMode.Immutable),
         new("System.Version", ThreadSafetyMode.Immutable),
         
+        // System.Globalization
+        new("System.Globalization.CultureInfo", ThreadSafetyMode.Immutable),
+        
         // System.Net
         new("System.Net.IPAddress", ThreadSafetyMode.Immutable),
         new("System.Net.WebClient", ThreadSafetyMode.Synchronized),
