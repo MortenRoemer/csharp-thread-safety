@@ -24,7 +24,7 @@ public static class MRTS0003RuleAnalyzer
         if (property.ContainingType is null || !property.ContainingType.GetThreadSafetyMode(out var mode) || mode != ThreadSafetyMode.Synchronized)
             return;
         
-        if (property.ContainingType.IsActivityArgument())
+        if (property.Type.IsActivityArgument())
             return;
         
         if (!(property.IsReadOnly || (property.IsRequired && property.SetMethod!.IsInitOnly)))

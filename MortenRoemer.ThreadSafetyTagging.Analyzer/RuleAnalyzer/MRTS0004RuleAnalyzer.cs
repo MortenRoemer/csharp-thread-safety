@@ -24,7 +24,7 @@ public static class MRTS0004RuleAnalyzer
         if (field.ContainingType is null || !field.ContainingType.GetThreadSafetyMode(out var mode) || mode != ThreadSafetyMode.Synchronized)
             return;
         
-        if (field.ContainingType.IsActivityArgument())
+        if (field.Type.IsActivityArgument())
             return;
         
         if (!(field.IsReadOnly || field.IsConst || field.IsVolatile))
