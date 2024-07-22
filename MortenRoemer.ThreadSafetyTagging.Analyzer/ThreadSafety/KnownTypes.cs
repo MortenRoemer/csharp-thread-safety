@@ -56,6 +56,9 @@ public static class KnownTypes
         new("System.Text.Json.JsonNamingPolicy", ThreadSafetyMode.Immutable),
         new("System.Text.Json.JsonProperty", ThreadSafetyMode.Immutable),
         
+        // System.Text.RegularExpressions
+        new("System.Text.RegularExpressions.Regex", ThreadSafetyMode.Immutable),
+        
         // System.Threading
         new("System.Threading.AsyncLocal", ThreadSafetyMode.Synchronized),
         new("System.Threading.CancellationToken", ThreadSafetyMode.Synchronized),
