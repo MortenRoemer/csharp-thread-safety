@@ -39,4 +39,7 @@ public class ImmutableDataClass : IImmutableInterface
 
     // Any ReadOnlyMemory of immutable values is also immutable
     public readonly ReadOnlyMemory<int> someIntegers;
+
+    // Any auto-getter properties are safe in immutable types
+    public List<int> FirstInteger => new List<int>(someIntegers.Span[0]);
 }
