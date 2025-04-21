@@ -23,6 +23,8 @@ public static class ContainerTypes
             new("System.Collections.Immutable.ImmutableStack", ThreadSafetyMode.Immutable),
             new("System.Collections.Frozen.FrozenDictionary", ThreadSafetyMode.Immutable),
             new("System.Collections.Frozen.FrozenSet", ThreadSafetyMode.Immutable),
+            new("System.ReadOnlyMemory", ThreadSafetyMode.Immutable),
+            new("System.ReadOnlySpan", ThreadSafetyMode.Immutable),
             new("System.Collections.Concurrent.ConcurrentBag", ThreadSafetyMode.Synchronized),
             new("System.Collections.Concurrent.ConcurrentDictionary", ThreadSafetyMode.Synchronized),
             new("System.Collections.Concurrent.ConcurrentQueue", ThreadSafetyMode.Synchronized),

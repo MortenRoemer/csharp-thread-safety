@@ -36,4 +36,10 @@ public class ImmutableDataClass : IImmutableInterface
     
     // Any Collection Property that is readonly and has no interior mutability in its members is immutable
     public required IReadOnlyList<DateTime> PointsInTime { get; init; }
+
+    // Any ReadOnlyMemory of immutable values is also immutable
+    public readonly ReadOnlyMemory<int> someIntegers;
+
+    // Any auto-getter properties are safe in immutable types
+    public List<int> FirstInteger => new List<int>(someIntegers.Span[0]);
 }

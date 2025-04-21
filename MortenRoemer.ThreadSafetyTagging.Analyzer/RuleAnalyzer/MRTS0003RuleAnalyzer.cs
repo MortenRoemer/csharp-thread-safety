@@ -1,4 +1,5 @@
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using MortenRoemer.ThreadSafetyTagging.Analyzer.Platform;
 using MortenRoemer.ThreadSafetyTagging.Analyzer.ThreadSafety;
@@ -20,6 +21,14 @@ public static class MRTS0003RuleAnalyzer
     {
         if (context.Symbol is not IPropertySymbol property || property.HasSkipCheckAttribute())
             return;
+        
+        if (property.DeclaringSyntaxReferences.Length > 0)
+        {
+            var propertySyntax = (PropertyDeclarationSyntax)property.DeclaringSyntaxReferences[0].GetSyntax();
+
+            if (propertySyntax.ExpressionBody != null)
+                return;
+        }
         
         if (property.ContainingType is null || !property.ContainingType.GetThreadSafetyMode(out var mode) || mode != ThreadSafetyMode.Synchronized)
             return;
