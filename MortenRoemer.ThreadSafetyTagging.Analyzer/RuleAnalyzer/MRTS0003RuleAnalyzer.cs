@@ -24,9 +24,9 @@ public static class MRTS0003RuleAnalyzer
         
         if (property.DeclaringSyntaxReferences.Length > 0)
         {
-            var propertySyntax = (PropertyDeclarationSyntax)property.DeclaringSyntaxReferences[0].GetSyntax();
+            var propertySyntax = property.DeclaringSyntaxReferences[0].GetSyntax() as PropertyDeclarationSyntax;
 
-            if (propertySyntax.ExpressionBody != null)
+            if (propertySyntax?.ExpressionBody != null)
                 return;
         }
         
