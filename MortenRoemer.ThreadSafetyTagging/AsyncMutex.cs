@@ -37,7 +37,6 @@ public sealed class AsyncMutex<T> : IDisposable, IAsyncDisposable
             disposable.Dispose();
     }
     
-#if CORECLR
     public async ValueTask DisposeAsync()
     {
         _lock.Dispose();
@@ -56,7 +55,6 @@ public sealed class AsyncMutex<T> : IDisposable, IAsyncDisposable
                 break;
         }
     }
-#endif
 
     /// <summary>
     /// Executes the specified action on its content in a matter that is safe in a multi-threading context
