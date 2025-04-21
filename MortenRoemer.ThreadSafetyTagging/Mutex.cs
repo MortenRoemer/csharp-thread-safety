@@ -25,6 +25,9 @@ public sealed class Mutex<T> : IDisposable
     [SkipMemorySafetyCheck(Because = "this instance is protected against concurrent access by a mutex")]
     private T? _instance;
     
+    /// <summary>
+    /// Releases the resources of the internal <see cref="Mutex"/> object.
+    /// </summary>
     public void Dispose()
     {
         _lock.Dispose();
